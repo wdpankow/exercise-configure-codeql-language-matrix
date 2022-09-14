@@ -7,6 +7,13 @@ on:
 jobs:
   CodeQL-Build:
     runs-on: ubuntu-latest
+    analyze:
+    name: Analyze
+    ...
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['python']
 
     permissions:
       # required for all workflows
@@ -23,5 +30,3 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
-        with:
-          languages: python
